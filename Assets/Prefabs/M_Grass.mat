@@ -89,6 +89,10 @@ Material:
         m_Texture: {fileID: 8400000, guid: 33f030bb86b214f44b4de2174fc977c4, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _WindTexture:
+        m_Texture: {fileID: 2800000, guid: 8c94a36de517bbe408abd5a441d9bcea, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -113,6 +117,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DepthColorPower: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -136,6 +141,10 @@ Material:
     - _Surface: 0
     - _TerrainOffset: 0
     - _TerrainSize: 100
+    - _WindHeight: 0.5
+    - _WindIntensity: 0.2
+    - _WindNoiseSpeed: 1
+    - _WindSpeed: 0.1
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
@@ -148,5 +157,7 @@ Material:
     - _NearColor: {r: 0.45976433, g: 0.8666667, b: 0.26666665, a: 1}
     - _NearFarRange: {r: 9.71, g: 31.48, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _WindNoiseContrast: {r: 0, g: 1, b: 0, a: 0}
+    - _WindNoiseScale: {r: 10, g: 20, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
