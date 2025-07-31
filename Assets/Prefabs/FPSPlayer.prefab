@@ -273,11 +273,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 150
+  fallingSpeed: 9.8
   cameraObject: {fileID: 1524117063414694768}
   xSensitivity: 0.1
   ySensitivity: 0.1
   maxCameraPitchAngle: 60
   minCameraPitchAngle: -70
+  maxSlopeAngle: 70
+  slopeDetectionDistance: 0.3
 --- !u!54 &8339248967042280812
 Rigidbody:
   m_ObjectHideFlags: 0
