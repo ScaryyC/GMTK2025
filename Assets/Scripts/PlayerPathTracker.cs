@@ -224,8 +224,6 @@ public class PlayerPathTracker : MonoBehaviour
         splineExtrude.Range = splinePercentage;
         splineExtrude.Rebuild();
         StartCoroutine(ExtrudeSplineCoroutine());
-        Debug.Log(splinePercentage.y);
-        
     }
 
 }
