@@ -16,6 +16,7 @@ public class PlayerPathTracker : MonoBehaviour
     Transform playerTransform;
     Spline currentPath;
     public float createKnotInterval = 3;
+    public float splineHeight = 100f;
     bool pathCompleted = false;
 
     [Header("Loop Quality Check")]
@@ -23,8 +24,11 @@ public class PlayerPathTracker : MonoBehaviour
     public float distanceOkay = 20f;
     public float distanceBad = 50f;
 
-    [Header("Completion Check")]
-    public float areaPathHeight = 100f;
+    [Header("Trace Path")]
+    SplineExtrude splineExtrude;
+    MeshRenderer extrudeRenderer;
+    public float traceSpeed = 1f;
+    public float traceInterval = 0.2f;
 
     [Header("DEBUG")]
     public bool showDistances;
@@ -38,7 +42,23 @@ public class PlayerPathTracker : MonoBehaviour
             return;
         }
         playerTransform = trackingPlayer.transform;
+        splineExtrude = GetComponent<SplineExtrude>();
+        extrudeRenderer = GetComponent<MeshRenderer>();
+        if (splineExtrude != null)
+        {
+            extrudeRenderer.enabled = false;
+        }
         StartSpline();
+    }
+
+    private void OnEnable()
+    {
+        GameManager.onStartPathTracing += TraceSplinePath;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.onStartPathTracing -= TraceSplinePath;
     }
 
     public void StartSpline()
@@ -70,7 +90,7 @@ public class PlayerPathTracker : MonoBehaviour
         {
             return;
         }
-        float3 knotPosition = new float3(playerTransform.position.x, 0, playerTransform.position.z);
+        float3 knotPosition = new float3(playerTransform.position.x, splineHeight, playerTransform.position.z);
         currentPath.Add(knotPosition);
         StartCoroutine(CreateKnotCoroutine());
     }
@@ -166,6 +186,46 @@ public class PlayerPathTracker : MonoBehaviour
             }
         }
         return passed;
+    }
+    void TraceSplinePath()
+    {
+        if (extrudeRenderer == null)
+        {
+            Debug.Log("Renderer is null");
+            return;
+        }
+
+        extrudeRenderer.enabled = true;
+        StartCoroutine(ExtrudeSplineCoroutine());
+    }
+
+    IEnumerator ExtrudeSplineCoroutine()
+    {
+        yield return new WaitForSeconds(traceInterval);
+        ExtrudeMesh();
+    }
+
+    void ExtrudeMesh()
+    {
+        if (splineExtrude == null)
+        {
+            Debug.Log("Spline extrude is null");
+            return;
+        }
+        Vector2 splinePercentage = splineExtrude.Range;
+
+        if (splinePercentage.y >= 1)
+        {
+            StopCoroutine(ExtrudeSplineCoroutine());
+            GameManager.onFinishPathTracing?.Invoke();
+            return;
+        }
+        splinePercentage.y += traceSpeed;
+        splineExtrude.Range = splinePercentage;
+        splineExtrude.Rebuild();
+        StartCoroutine(ExtrudeSplineCoroutine());
+        Debug.Log(splinePercentage.y);
+        
     }
 
 }

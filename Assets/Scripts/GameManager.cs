@@ -12,6 +12,12 @@ public class GameManager : MonoBehaviour
     public delegate void LevelRestarted();
     public static LevelRestarted onLevelRestarted;
 
+    public delegate void StartPathTracing();
+    public static StartPathTracing onStartPathTracing;
+
+    public delegate void FinishPathTracing();
+    public static FinishPathTracing onFinishPathTracing;
+
     [Header("Completion Check")]
     public GameObject[] towersArray;
     static int towersArrayLength;

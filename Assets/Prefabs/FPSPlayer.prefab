@@ -685,11 +685,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 150
   fallingSpeed: 9.8
-  cameraObject: {fileID: 1524117063414694768}
+  cameraObject: {fileID: 6263374091721333347}
   xSensitivity: 0.1
   ySensitivity: 0.1
   maxCameraPitchAngle: 60
   minCameraPitchAngle: -70
+  birdsEyeViewPosition: {fileID: 0}
   maxSlopeAngle: 70
   slopeDetectionDistance: 0.3
   UIManager: {fileID: 8493721405973018294}
@@ -985,3 +986,7 @@ MonoBehaviour:
   interactText: {fileID: 3270160398203816418}
   topLeftText: {fileID: 3592936886545854818}
   bigText: {fileID: 9029453962824524027}
+  badMessage: Not even close...
+  okayMessage: Close enough
+  goodMessage: Great job!
+  amazingMessage: Right on the dot!
