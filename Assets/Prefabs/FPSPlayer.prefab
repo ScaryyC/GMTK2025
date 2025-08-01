@@ -683,14 +683,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb1053ff22185049bf4bd7ac54c3aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 150
+  walkSpeed: 30
   fallingSpeed: 9.8
   cameraObject: {fileID: 6263374091721333347}
-  xSensitivity: 0.1
-  ySensitivity: 0.1
+  xSensitivity: 0.13
+  ySensitivity: 0.13
   maxCameraPitchAngle: 60
   minCameraPitchAngle: -70
   birdsEyeViewPosition: {fileID: 0}
+  cameraAnimationSpeed: 3
+  cameraRotationSpeed: 0.8
   maxSlopeAngle: 70
   slopeDetectionDistance: 0.3
   UIManager: {fileID: 8493721405973018294}

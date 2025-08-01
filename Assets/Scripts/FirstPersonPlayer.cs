@@ -62,10 +62,6 @@ public class FirstPersonPlayer : MonoBehaviour
 
     void Update()
     {
-        if (hasControl)
-        {
-            UpdateCameraRotation();
-        }
     }
 
     private void FixedUpdate()
@@ -73,6 +69,7 @@ public class FirstPersonPlayer : MonoBehaviour
         if (hasControl)
         {
             UpdatePlayerMovement();
+            UpdateCameraRotation();
         }
         SetAboveGround();
 
@@ -85,7 +82,7 @@ public class FirstPersonPlayer : MonoBehaviour
     void UpdatePlayerMovement()
     {
         moveDirection = transform.forward * moveInput.y + transform.right * moveInput.x;
-        rb.AddForce(moveDirection.normalized * walkSpeed, ForceMode.Force);
+        rb.AddForce(moveDirection.normalized * walkSpeed, ForceMode.Acceleration);
     }
 
     void UpdateCameraRotation()
