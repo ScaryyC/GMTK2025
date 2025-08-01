@@ -20,19 +20,28 @@ public class FirstPersonPlayer : MonoBehaviour
     public float maxSlopeAngle = 70f;
     public float slopeDetectionDistance = 0.3f;
 
+    [Header("UI")]
+    public UIManager UIManager;
+
     Vector2 moveInput;
     Vector2 lookInput;
     private float cameraPitch;
     private Vector3 moveDirection;
     Rigidbody rb;
 
+    Tower currentTower;
+    int towersInteracted = 0;
+
     void Start()
     {
+        if (UIManager == null)
+        {
+            Debug.LogError("UI MANAGER IS NOT HOOKED UP");
+        }
         rb = GetComponent<Rigidbody>();
         TakeMouseControl();
     }
 
-    
     void Update()
     {
         UpdateCameraRotation();
@@ -85,25 +94,6 @@ public class FirstPersonPlayer : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
     }
 
-    //void UpdateOnSlope()
-    //{
-    //    RaycastHit slopeHit;
-    //    if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, transformComponent.position.y + slopeDetectionDistance))
-    //    {
-    //        float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
-    //        if (angle < maxSlopeAngle && angle != 0)
-    //        {
-    //            float currentX = transformComponent.position.x;
-    //            float currentZ = transformComponent.position.z;
-    //            float newY = slopeHit.point.y;
-    //            transformComponent.SetLocalPositionAndRotation(new Vector3(currentX, newY, currentZ), transformComponent.rotation);
-
-    //            //Color rayColor = Color.red;
-    //            //Debug.DrawLine(slopeHit.point, new Vector3(slopeHit.point.x, slopeHit.point.y + 0.1f, slopeHit.point.z), rayColor, 1);
-    //        }
-    //    }
-    //}
-
     float extraHeight = 0f;
     void SetAboveGround()
     {
@@ -118,5 +108,46 @@ public class FirstPersonPlayer : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Tower")
+        {
+            UIManager.EnableInteractText(true);
+            currentTower = other.gameObject.GetComponent<Tower>();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Tower")
+        {
+            LeaveTower();
+        }
+    }
+
+    public void InteractWithTower()
+    {
+        if (currentTower != null)
+        {
+            currentTower.VisitTower();
+            LeaveTower();
+            towersInteracted++;
+            if (towersInteracted >= GameManager.GetTowersArrayLength())
+            {
+                GameManager.onAllTowersOn?.Invoke();
+            }
+        }
+    }
+
+    void LeaveTower()
+    {
+        UIManager.EnableInteractText(false);
+        currentTower = null;
+    }
+
+    void OnAllTowersInteracted()
+    {
+        UIManager.EnableTopLeftText(true);
+    }
 
 }
