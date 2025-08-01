@@ -84,8 +84,8 @@ MonoBehaviour:
   distanceGood: 10
   distanceOkay: 30
   distanceBad: 50
-  traceSpeed: 0.05
-  traceInterval: 0.02
+  traceSpeed: 0.04
+  traceInterval: 0.3
   showDistances: 0
   ignoreTowers: 0
 --- !u!114 &6729863597497258808
@@ -253,21 +253,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Container: {fileID: 2096049738426059929}
   m_TargetMesh: {fileID: 0}
-  m_RebuildOnSplineChange: 1
+  m_RebuildOnSplineChange: 0
   m_RebuildFrequency: 1
   m_UpdateColliders: 0
   m_Sides: 8
-  m_SegmentsPerUnit: 4
+  m_SegmentsPerUnit: 1
   m_Capped: 0
-  m_Radius: 4
+  m_Radius: 3
   m_Range: {x: 0, y: 0}
   m_FlipNormals: 0
   m_Shape:
-    rid: 6022954299705000004
+    rid: 6022954313456287815
   references:
     version: 2
     RefIds:
-    - rid: 6022954299705000004
-      type: {class: Circle, ns: UnityEngine.Splines.ExtrusionShapes, asm: Unity.Splines}
-      data:
-        m_Sides: 8
+    - rid: 6022954313456287815
+      type: {class: Square, ns: UnityEngine.Splines.ExtrusionShapes, asm: Unity.Splines}
+      data: 
