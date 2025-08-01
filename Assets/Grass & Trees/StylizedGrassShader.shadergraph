@@ -2610,8 +2610,8 @@
     "m_ObjectId": "324ec073923545a89a7b452585fffca6",
     "m_Title": "Grass Sway",
     "m_Position": {
-        "x": -2507.999755859375,
-        "y": -780.9998779296875
+        "x": -2508.0,
+        "y": -781.0
     }
 }
 
@@ -2929,7 +2929,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"8c94a36de517bbe408abd5a441d9bcea\",\"type\":3}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -3765,10 +3765,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1839.9998779296875,
-            "y": -1278.0001220703125,
+            "x": -1840.0,
+            "y": -1278.0,
             "width": 208.0,
-            "height": 433.00006103515627
+            "height": 433.0
         }
     },
     "m_Slots": [
@@ -4526,8 +4526,8 @@
     "m_ObjectId": "7fee4434d0584f1da0c3ef010cf40d8f",
     "m_Title": "Depth",
     "m_Position": {
-        "x": -2039.9998779296875,
-        "y": 136.9999237060547
+        "x": -2040.0,
+        "y": 137.0001678466797
     }
 }
 
@@ -4812,8 +4812,8 @@
     "m_ObjectId": "87e15c49017849d2bfb25ce0a0674816",
     "m_Title": "Wind Noise Texture",
     "m_Position": {
-        "x": -2912.999755859375,
-        "y": -1448.9998779296875
+        "x": -2913.0,
+        "y": -1449.0
     }
 }
 
@@ -6774,7 +6774,7 @@
     "m_Title": "HeightBlend",
     "m_Position": {
         "x": -1609.0,
-        "y": 675.0
+        "y": 675.000244140625
     }
 }
 
