@@ -25,6 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5891060847685163199}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,7 +35,6 @@ Transform:
   - {fileID: 6148616212419270850}
   - {fileID: 529687928592557023}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &6565865939830295171
 LODGroup:
@@ -139,13 +139,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 3421edd9e21b0d042abe3b4c41238945, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8cd9f545b860e784180e45379d122ef4, type: 2}
     - target: {fileID: -7511558181221131132, guid: 3421edd9e21b0d042abe3b4c41238945, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0ba2c3331bd2eb845ad94daa5d403ff4, type: 2}
+      objectReference: {fileID: 2100000, guid: 2d6afed19582fea4c93b9591d7e797fa, type: 2}
     - target: {fileID: 919132149155446097, guid: 3421edd9e21b0d042abe3b4c41238945, type: 3}
       propertyPath: m_Name
       value: S_Tree_C_LOD_2
@@ -218,13 +218,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 37bf514c65e5cbd469459a699c12a738, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8cd9f545b860e784180e45379d122ef4, type: 2}
     - target: {fileID: -7511558181221131132, guid: 37bf514c65e5cbd469459a699c12a738, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0ba2c3331bd2eb845ad94daa5d403ff4, type: 2}
+      objectReference: {fileID: 2100000, guid: 2d6afed19582fea4c93b9591d7e797fa, type: 2}
     - target: {fileID: 919132149155446097, guid: 37bf514c65e5cbd469459a699c12a738, type: 3}
       propertyPath: m_Name
       value: S_Tree_C
@@ -297,13 +297,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: ed223b713a5378c4096db7b12f41ca9e, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8cd9f545b860e784180e45379d122ef4, type: 2}
     - target: {fileID: -7511558181221131132, guid: ed223b713a5378c4096db7b12f41ca9e, type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0ba2c3331bd2eb845ad94daa5d403ff4, type: 2}
+      objectReference: {fileID: 2100000, guid: 2d6afed19582fea4c93b9591d7e797fa, type: 2}
     - target: {fileID: 919132149155446097, guid: ed223b713a5378c4096db7b12f41ca9e, type: 3}
       propertyPath: m_Name
       value: S_Tree_C_LOD_1

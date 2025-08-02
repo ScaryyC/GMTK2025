@@ -1155,7 +1155,7 @@
     "m_ObjectId": "5004ba4dbdb44fa8b5b24028c31f2cc4",
     "m_Title": "Wind",
     "m_Position": {
-        "x": -2424.999755859375,
+        "x": -2425.0,
         "y": -425.0
     }
 }
@@ -1516,7 +1516,7 @@
     "m_ZTestMode": 4,
     "m_ZWriteControl": 0,
     "m_AlphaMode": 0,
-    "m_RenderFace": 2,
+    "m_RenderFace": 0,
     "m_AlphaClip": true,
     "m_CastShadows": true,
     "m_ReceiveShadows": true,
