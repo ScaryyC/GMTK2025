@@ -8,6 +8,7 @@ public class FirstPersonPlayer : MonoBehaviour
     [Header("Movement")]
     public float walkSpeed = 100f;
     public float fallingSpeed = 9.8f;
+    public bool sphericalMovement = false;
 
     [Header("Camera")]
     public Camera cameraObject;
@@ -40,7 +41,7 @@ public class FirstPersonPlayer : MonoBehaviour
     bool hasControl = true;
     bool movingCamera = false;
 
-    void Start()
+    void Awake()
     {
         if (UIManager == null)
         {
@@ -58,10 +59,6 @@ public class FirstPersonPlayer : MonoBehaviour
     private void OnDisable()
     {
         GameManager.onPathCompleted -= RemovePlayerControl;
-    }
-
-    void Update()
-    {
     }
 
     private void FixedUpdate()
@@ -107,6 +104,7 @@ public class FirstPersonPlayer : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        hasControl = true;
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -128,8 +126,12 @@ public class FirstPersonPlayer : MonoBehaviour
             Vector3 point = hit.point;
             point.y += extraHeight;
             transform.position = Vector3.Lerp(transform.position, point, Time.fixedDeltaTime * fallingSpeed);
-            //Quaternion slopeRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
-            //transform.rotation = slopeRotation;
+
+            if (sphericalMovement)
+            {
+                Quaternion slopeRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+                transform.rotation = slopeRotation;
+            }
         }
     }
 
