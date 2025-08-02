@@ -33,9 +33,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DebugTest",
+                    "name": "Complete",
                     "type": "Button",
                     "id": "f1ef83de-c414-41d8-9e35-6c019a732bb5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Exit",
+                    "type": "Button",
+                    "id": "87dbe1df-b609-48f7-9a51-b24b88970613",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -233,11 +242,22 @@
                 {
                     "name": "",
                     "id": "1e0350e7-4f86-41de-9887-f84ddbd538a8",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DebugTest",
+                    "action": "Complete",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "48a735bd-c0b4-4fd6-8097-349107b25aed",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Exit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

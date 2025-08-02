@@ -15,20 +15,6 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        if (interactText != null)
-        {
-            interactText.enabled = false;
-        }
-
-        if (bigText != null)
-        {
-            bigText.enabled = false;
-        }
-
-        if (topLeftText != null)
-        {
-            topLeftText.enabled = false;
-        }
     }
 
     private void OnEnable()

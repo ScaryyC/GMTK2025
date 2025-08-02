@@ -49,6 +49,7 @@ public class FirstPersonPlayer : MonoBehaviour
         }
         rb = GetComponent<Rigidbody>();
         TakeMouseControl();
+        InitializeStartingUI();
     }
 
     private void OnEnable()
@@ -117,6 +118,18 @@ public class FirstPersonPlayer : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
     }
 
+    public void CompleteLoop()
+    {
+        PlayerPathTracker pathTracker = GameObject.FindAnyObjectByType<PlayerPathTracker>();
+        if (pathTracker == null)
+        {
+            Debug.Log("No path tracker found");
+            return;
+        }
+
+        pathTracker.CompletePath();
+    }
+
     float extraHeight = 0f;
     void SetAboveGround()
     {
@@ -161,6 +174,10 @@ public class FirstPersonPlayer : MonoBehaviour
             towersInteracted++;
             if (towersInteracted >= GameManager.GetTowersArrayLength())
             {
+                UIManager.EnableTopLeftText(true);
+                UIManager.SetTopLeftText("Return to your starting position!");
+                UIManager.EnableInteractText(true);
+                UIManager.SetInteractText("Press Enter to end the level");
                 GameManager.onAllTowersOn?.Invoke();
             }
         }
@@ -185,8 +202,6 @@ public class FirstPersonPlayer : MonoBehaviour
             Debug.Log("No birds eye position set");
             return;
         }
-        //cameraObject.orthographic = true;
-        //cameraObject.orthographicSize = 125f;
         movingCamera = true;
     }
 
@@ -204,6 +219,14 @@ public class FirstPersonPlayer : MonoBehaviour
             GameManager.onStartPathTracing?.Invoke();
             movingCamera = false;
         }
+    }
+
+    void InitializeStartingUI()
+    {
+        UIManager.EnableBigText(false);
+        UIManager.EnableInteractText(false);
+        UIManager.EnableTopLeftText(true);
+        UIManager.SetTopLeftText("Activate all of the towers!");
     }
 
 }

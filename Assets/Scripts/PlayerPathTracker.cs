@@ -103,7 +103,6 @@ public class PlayerPathTracker : MonoBehaviour
             return;
         }
 
-        Debug.Log("Complete Path called");
         if ((AreTowersVisisted() || ignoreTowers) && !pathCompleted)
         {
             CreateKnot();
