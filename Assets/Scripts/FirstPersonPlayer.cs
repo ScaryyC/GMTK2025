@@ -95,7 +95,6 @@ public class FirstPersonPlayer : MonoBehaviour
 
         float mouseX = lookInput.x * xSensitivity;
         float mouseY = lookInput.y * ySensitivity;
-        
         cameraPitch -= mouseY;
         cameraPitch = Mathf.Clamp(cameraPitch, minCameraPitchAngle, maxCameraPitchAngle);
         
