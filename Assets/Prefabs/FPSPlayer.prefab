@@ -691,8 +691,8 @@ MonoBehaviour:
   maxCameraPitchAngle: 60
   minCameraPitchAngle: -70
   birdsEyeViewPosition: {fileID: 0}
-  cameraAnimationSpeed: 3
-  cameraRotationSpeed: 0.8
+  cameraAnimationSpeed: 0.8
+  cameraRotationSpeed: 0.5
   maxSlopeAngle: 70
   slopeDetectionDistance: 0.3
   UIManager: {fileID: 8493721405973018294}
