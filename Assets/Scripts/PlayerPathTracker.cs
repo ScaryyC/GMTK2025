@@ -17,6 +17,7 @@ public class PlayerPathTracker : MonoBehaviour
     Spline currentPath;
     public float createKnotInterval = 3;
     public float splineHeight = 100f;
+    public bool matchPlayerHeight = false;
     bool pathCompleted = false;
 
     [Header("Loop Quality Check")]
@@ -90,7 +91,15 @@ public class PlayerPathTracker : MonoBehaviour
         {
             return;
         }
-        float3 knotPosition = new float3(playerTransform.position.x, splineHeight, playerTransform.position.z);
+
+
+        Vector3 playerPos = playerTransform.position;
+        if (matchPlayerHeight)
+        {
+            splineHeight = playerPos.y;
+        }
+
+        float3 knotPosition = new float3(playerPos.x, splineHeight, playerPos.z);
         currentPath.Add(knotPosition);
         StartCoroutine(CreateKnotCoroutine());
     }
