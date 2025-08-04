@@ -41,6 +41,8 @@ public class FirstPersonPlayer : MonoBehaviour
     bool hasControl = true;
     bool movingCamera = false;
 
+    bool gamePaused = false;
+    bool gameFinished = false;
     void Awake()
     {
         if (UIManager == null)
@@ -55,11 +57,13 @@ public class FirstPersonPlayer : MonoBehaviour
     private void OnEnable()
     {
         GameManager.onPathCompleted += RemovePlayerControl;
+        GameManager.onFinishPathTracing += ShowWinScreen;
     }
 
     private void OnDisable()
     {
         GameManager.onPathCompleted -= RemovePlayerControl;
+        GameManager.onFinishPathTracing -= ShowWinScreen;
     }
 
     private void FixedUpdate()
@@ -108,6 +112,13 @@ public class FirstPersonPlayer : MonoBehaviour
         hasControl = true;
     }
 
+    void LoseMouseControl()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        hasControl = false;
+    }
+
     public void OnLook(InputAction.CallbackContext context)
     {
         lookInput = context.ReadValue<Vector2>();
@@ -126,7 +137,12 @@ public class FirstPersonPlayer : MonoBehaviour
             Debug.Log("No path tracker found");
             return;
         }
-
+        if (towersInteracted >= GameManager.GetTowersArrayLength())
+        {
+            gameFinished = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
         pathTracker.CompletePath();
     }
 
@@ -167,7 +183,7 @@ public class FirstPersonPlayer : MonoBehaviour
 
     public void InteractWithTower()
     {
-        if (currentTower != null)
+        if (currentTower != null && hasControl)
         {
             currentTower.VisitTower();
             LeaveTower();
@@ -223,10 +239,80 @@ public class FirstPersonPlayer : MonoBehaviour
 
     void InitializeStartingUI()
     {
-        UIManager.EnableBigText(false);
+        UIManager.EnableWinScren(false);
         UIManager.EnableInteractText(false);
         UIManager.EnableTopLeftText(true);
         UIManager.SetTopLeftText("Activate all of the towers!");
+    }
+
+    public void ShowWinScreen()
+    {
+        UIManager.EnableWinScren(true);
+    }
+
+    public void PauseGame()
+    {
+        if (gameFinished)
+        {
+            return;
+        }
+
+        if (!gamePaused)
+        {
+            gamePaused = true;
+            UIManager.EnableTopLeftText(false);
+            UIManager.EnablePauseScren(true);
+            LoseMouseControl();
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            UnpauseGame();
+        }   
+    }
+
+    public void UnpauseGame()
+    {
+        Time.timeScale = 1f;
+        gamePaused = false;
+        UIManager.EnablePauseScren(false);
+        TakeMouseControl();
+    }
+
+    public void GoToMainMenu()
+    {
+        GameManager gm = GameObject.FindAnyObjectByType<GameManager>();
+        if (gm == null)
+        {
+            Debug.Log("No game manager found");
+            return;
+        }
+        Time.timeScale = 1f;
+        gm.LoadLevel(0);
+    }
+
+    public void NextLevel()
+    {
+        GameManager gm = GameObject.FindAnyObjectByType<GameManager>();
+        if (gm == null)
+        {
+            Debug.Log("No game manager found");
+            return;
+        }
+        Time.timeScale = 1f;
+        gm.LoadNextLevel();
+    }
+
+    public void ResetLevel()
+    {
+        GameManager gm = GameObject.FindAnyObjectByType<GameManager>();
+        if (gm == null)
+        {
+            Debug.Log("No game manager found");
+            return;
+        }
+        Time.timeScale = 1f;
+        gm.ReloadLevel();
     }
 
 }

@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI interactText;
     public TextMeshProUGUI topLeftText;
     public TextMeshProUGUI bigText;
+    public GameObject pauseScreen;
+    public GameObject winScreen;
 
     public string badMessage = "Not even close...";
     public string okayMessage = "Close enough";
@@ -32,6 +34,28 @@ public class UIManager : MonoBehaviour
     void ShowEndableText()
     {
         EnableTopLeftText(true);
+    }
+
+    public void EnablePauseScren(bool enable)
+    {
+        if (pauseScreen == null)
+        {
+            Debug.Log("Pause screen null");
+            return;
+        }
+
+        pauseScreen.SetActive(enable);
+    }
+
+    public void EnableWinScren(bool enable)
+    {
+        if (winScreen == null)
+        {
+            Debug.Log("win screen null");
+            return;
+        }
+
+        winScreen.SetActive(enable);
     }
 
     void ShowResults()
