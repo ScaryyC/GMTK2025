@@ -3,21 +3,18 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-
+    [Header("UI References")]
     public TextMeshProUGUI interactText;
     public TextMeshProUGUI topLeftText;
     public TextMeshProUGUI bigText;
     public GameObject pauseScreen;
     public GameObject winScreen;
 
+    [Header("Win screen messages")]
     public string badMessage = "Not even close...";
     public string okayMessage = "Close enough";
     public string goodMessage = "Great job!";
     public string amazingMessage = "Right on the dot!";
-
-    private void Awake()
-    {
-    }
 
     private void OnEnable()
     {

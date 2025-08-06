@@ -29,6 +29,9 @@ public class FirstPersonPlayer : MonoBehaviour
     [Header("UI")]
     public UIManager UIManager;
 
+    [Header("Footsteps")]
+    public FootstepSounds footstepSounds;
+
     Vector2 moveInput;
     Vector2 lookInput;
     private float cameraPitch;
@@ -83,8 +86,16 @@ public class FirstPersonPlayer : MonoBehaviour
 
     void UpdatePlayerMovement()
     {
-        moveDirection = transform.forward * moveInput.y + transform.right * moveInput.x;
-        rb.AddForce(moveDirection.normalized * walkSpeed, ForceMode.Acceleration);
+        if (moveInput.magnitude != 0)
+        {
+            moveDirection = transform.forward * moveInput.y + transform.right * moveInput.x;
+            rb.AddForce(moveDirection.normalized * walkSpeed, ForceMode.Acceleration);
+            if (footstepSounds != null) 
+            {
+                footstepSounds.UpdateFootsteps();
+            }
+        }
+        
     }
 
     void UpdateCameraRotation()
