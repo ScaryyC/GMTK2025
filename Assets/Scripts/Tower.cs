@@ -5,6 +5,7 @@ public class Tower : MonoBehaviour
     public bool visisted = false;
     public Collider areaCollider;
     public ParticleSystem pfx;
+    public AudioSource audioSource;
 
     public void VisitTower()
     {
@@ -19,6 +20,11 @@ public class Tower : MonoBehaviour
         if (pfx != null)
         {
             pfx.Play();
+        }
+
+        if (audioSource != null)
+        {
+            audioSource.Play();
         }
     }
 

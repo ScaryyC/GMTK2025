@@ -26,16 +26,21 @@ public class PlayerPathTracker : MonoBehaviour
     public float distanceBad = 50f;
 
     [Header("Trace Path")]
-    SplineExtrude splineExtrude;
-    MeshRenderer extrudeRenderer;
     public float traceSpeed = 1f;
     public float traceInterval = 0.2f;
+    public AudioClip[] drumRollArray;
+    public AudioClip victoryFanfare;
+    SplineExtrude splineExtrude;
+    MeshRenderer extrudeRenderer;
+    int currentDrumBeat = 0;
+    AudioSource audioSource;
+    
 
     [Header("DEBUG")]
     public bool showDistances;
     public bool ignoreTowers;
 
-    void Start()
+    private void Awake()
     {
         if (trackingPlayer == null)
         {
@@ -45,6 +50,7 @@ public class PlayerPathTracker : MonoBehaviour
         playerTransform = trackingPlayer.transform;
         splineExtrude = GetComponent<SplineExtrude>();
         extrudeRenderer = GetComponent<MeshRenderer>();
+        audioSource = GetComponent<AudioSource>();
         if (splineExtrude != null)
         {
             extrudeRenderer.enabled = false;
@@ -227,12 +233,59 @@ public class PlayerPathTracker : MonoBehaviour
         {
             StopCoroutine(ExtrudeSplineCoroutine());
             GameManager.onFinishPathTracing?.Invoke();
+            PlayFanfare();
             return;
         }
         splinePercentage.y += traceSpeed;
         splineExtrude.Range = splinePercentage;
         splineExtrude.Rebuild();
+        PlayDrumroll();
         StartCoroutine(ExtrudeSplineCoroutine());
+    }
+
+    void PlayDrumroll()
+    {
+        if (audioSource == null)
+        {
+            Debug.Log("No audio source");
+            return;
+        }
+
+        if (drumRollArray.Length == 0)
+        {
+            Debug.Log("No drum roll set");
+            return;
+        }
+
+        AudioClip drumSound = drumRollArray[currentDrumBeat];
+        currentDrumBeat = (currentDrumBeat + 1) % drumRollArray.Length;
+
+        if (drumSound == null)
+        {
+            return;
+        }
+
+        audioSource.clip = drumSound;
+        audioSource.Play();
+    }
+
+    void PlayFanfare()
+    {
+        if (audioSource == null)
+        {
+            Debug.Log("No audio source");
+            return;
+        }
+
+        if (victoryFanfare == null)
+        {
+            Debug.Log("No fanfare set");
+            return;
+        }
+
+        audioSource.clip = victoryFanfare;
+        audioSource.Play();
+
     }
 
 }
