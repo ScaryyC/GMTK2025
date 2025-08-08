@@ -141,26 +141,21 @@ public class PlayerPathTracker : MonoBehaviour
         Vector2 firstKnotPosition = new Vector2(firstKnot.Position.x, firstKnot.Position.z);
         Vector2 lastKnotPosition = new Vector2(lastKnot.Position.x, lastKnot.Position.z);
         float closingLoopDistance = Vector2.Distance(lastKnotPosition, firstKnotPosition);
-        Debug.Log("Distance: " + closingLoopDistance);
         if (closingLoopDistance >= distanceBad)
         {
             gm.SetPlayerLoopQuality(GameManager.LoopQuality.Bad);
-            Debug.Log("Your loop is: BAD");
         }
         else if (closingLoopDistance >= distanceOkay)
         {
             gm.SetPlayerLoopQuality(GameManager.LoopQuality.Okay);
-            Debug.Log("Your loop is: OKAY");
         }
         else if (closingLoopDistance >= distanceGood)
         {
             gm.SetPlayerLoopQuality(GameManager.LoopQuality.Good);
-            Debug.Log("Your loop is: GOOD");
         }
         else
         {
             gm.SetPlayerLoopQuality(GameManager.LoopQuality.Amazing);
-            Debug.Log("Your loop is: AMAZING");
         }
 
         if (showDistances)
