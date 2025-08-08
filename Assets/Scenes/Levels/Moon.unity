@@ -766,7 +766,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 955407530404413011, guid: 227faaa3f1e8036448f014d7b0e397c1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1165196055167304451, guid: 227faaa3f1e8036448f014d7b0e397c1, type: 3}
       propertyPath: footStepSounds.Array.size
@@ -788,6 +788,10 @@ PrefabInstance:
       propertyPath: 'footStepSounds.Array.data[3]'
       value: 
       objectReference: {fileID: 8300000, guid: 034af99ba44f97d4d915552fdfcb1d12, type: 3}
+    - target: {fileID: 3270160398203816418, guid: 227faaa3f1e8036448f014d7b0e397c1, type: 3}
+      propertyPath: m_text
+      value: Press E to activate
+      objectReference: {fileID: 0}
     - target: {fileID: 3506647716994011976, guid: 227faaa3f1e8036448f014d7b0e397c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
