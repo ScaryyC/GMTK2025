@@ -271,7 +271,6 @@ public class FirstPersonPlayer : MonoBehaviour
         if (!gamePaused)
         {
             gamePaused = true;
-            UIManager.EnableTopLeftText(false);
             UIManager.EnablePauseScren(true);
             LoseMouseControl();
             Time.timeScale = 0f;
