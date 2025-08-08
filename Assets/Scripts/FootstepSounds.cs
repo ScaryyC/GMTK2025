@@ -7,9 +7,11 @@ public class FootstepSounds : MonoBehaviour
     int currentFootstepSound = 0;
     public float footStepInterval = 0.7f;
     float footStepTimer = 0;
+    [Range(0, 1)] public float footStepVolume = 0.5f;
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = footStepVolume;
     }
 
     public void PlayFootStepSound()
@@ -27,7 +29,9 @@ public class FootstepSounds : MonoBehaviour
             Debug.Log("Unable to play footstep sound at index: " + num);
             return;
         }
-        audioSource.PlayOneShot(sound);
+        
+        audioSource.clip = sound;
+        audioSource.Play();
     }
 
     public void UpdateFootsteps()
