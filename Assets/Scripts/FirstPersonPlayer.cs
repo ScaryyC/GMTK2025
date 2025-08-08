@@ -241,10 +241,22 @@ public class FirstPersonPlayer : MonoBehaviour
         cameraPitch = Mathf.LerpAngle(cameraPitch, 90, Time.fixedDeltaTime * cameraRotationSpeed);
         cameraObject.transform.localRotation = Quaternion.Euler(cameraPitch, 0, 0);
 
+        LerpRemoveFog();
+
         if (Mathf.Abs(currentCameraPosition.y - birdsEyeViewPosition.position.y) <= 1)
         {
             GameManager.onStartPathTracing?.Invoke();
             movingCamera = false;
+        }
+    }
+
+    void LerpRemoveFog()
+    {
+        if (RenderSettings.fog)
+        {
+            float fogDensity = RenderSettings.fogDensity;
+            fogDensity = Mathf.Lerp(fogDensity, 0, Time.fixedDeltaTime);
+            RenderSettings.fogDensity = fogDensity;
         }
     }
 
